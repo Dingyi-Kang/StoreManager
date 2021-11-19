@@ -32,7 +32,7 @@ class TableViewVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         
         if let addVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ADD") as? AddViewController{
             
-            self.present(addVC, animated: false, completion: nil)
+            self.present(addVC, animated: true, completion: nil)
         }
     }
     
@@ -65,7 +65,7 @@ class TableViewVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
             }
             
             if let price = cell.viewWithTag(3) as? UILabel{
-                price.text = "$\(items[indexPath.row].price)"
+                price.text =   String(format: "$%.2f",items[indexPath.row].price)
             }
  
         } else {
