@@ -14,9 +14,9 @@ class Model {
     
     init () {
         for i in 1...3 {
-        let item1 = Item(name: "Aurito\(i)", price: 2.5, quantity: 20)
-        let item2 = Item(name: "Burito\(i)", price: 2.5, quantity: 20)
-        let item3 = Item(name: "Curito\(i)", price: 2.5, quantity: 20)
+            let item1 = Item(name: "Aurito\(i)", price: 1.4*Double(i), quantity: 3*i)
+            let item2 = Item(name: "Burito\(i)", price: 2.5*Double(i), quantity: 7*i)
+            let item3 = Item(name: "Curito\(i)", price: 2.4*Double(i), quantity: 11*i)
         items.append(item1)
         items.append(item2)
         items.append(item3)

@@ -16,34 +16,63 @@ class TableViewVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     @IBOutlet weak var tableView: UITableView!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         tableView.delegate = self;
         tableView.dataSource = self;
-        
+  
     }
 
     
+    @IBAction func addTapped(_ sender: Any) {
+        
+        print("good")
+    }
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        
+        if section == 1 {
+            return 1
+        } else {
+            return items.count
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        var cell:UITableViewCell!
         
-        if let title = cell.viewWithTag(1) as? UILabel{
-            title.text = items[indexPath.row].name
+        if indexPath.section == 0 {
+            cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            if let title = cell.viewWithTag(1) as? UILabel{
+                title.text = items[indexPath.row].name
+            }
+            
+            if let quantity = cell.viewWithTag(2) as? UILabel{
+                quantity.text = "\(items[indexPath.row].quantity)"
+            }
+            
+            if let price = cell.viewWithTag(3) as? UILabel{
+                price.text = "$\(items[indexPath.row].price)"
+            }
+ 
+        } else {
+            cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath)
+            if let addButton = cell.viewWithTag(1) as? UIButton{
+                addButton.setTitle("ADD", for: .normal)
+            }
         }
         
-        if let quantity = cell.viewWithTag(2) as? UILabel{
-            quantity.text = "\(items[indexPath.row].quantity)"
-        }
-        
-        if let price = cell.viewWithTag(3) as? UILabel{
-            price.text = "$\(items[indexPath.row].price)"
-        }
+
         return cell
     }
     
@@ -51,6 +80,14 @@ class TableViewVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //if some one is selected
         
+        if indexPath.section == 1{
+            
+            if selectedIndex != nil{
+                tableView.deselectRow(at: selectedIndex!, animated: true)
+                selectedIndex = nil
+            }
+            return
+        }
         
         if let selected = selectedIndex {
             if selected == indexPath{
