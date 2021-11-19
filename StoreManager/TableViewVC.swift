@@ -12,6 +12,8 @@ class TableViewVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     let items = Model().items
     
+    var selectedIndex:IndexPath?
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -47,15 +49,33 @@ class TableViewVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "detail") as? DetailViewController {
-            
-            self.present(detailVC, animated: true, completion: nil)
+        //if some one is selected
         
+        
+        if let selected = selectedIndex {
+            if selected == indexPath{
+                tableView.deselectRow(at: selectedIndex!, animated: true)
+                selectedIndex = nil
+            } else {
+                tableView.deselectRow(at: selectedIndex!, animated: true)
+                selectedIndex = indexPath
+            }
+        }
+        //if it is nil
+        else {
+            selectedIndex = indexPath
         }
         
+        guard selectedIndex != nil else {return}
         
+        if let detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "detail") as? DetailViewController {
+            
+            detailVC.item = items[indexPath.row]
+            
+            self.present(detailVC, animated: true, completion: nil)
+        }
         
-    }
+        }
 
 }
 
