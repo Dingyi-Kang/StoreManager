@@ -37,10 +37,37 @@ class DetailViewController: UIViewController {
     
     
     @IBAction func editTapped(_ sender: Any) {
+        
+        if let addVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ADD") as? AddViewController{
+            
+            addVC.item = self.item
+            
+            self.present(addVC, animated: true, completion: nil)
+        }
+        
+        
     }
     
     
     @IBAction func deleteTapped(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "Confirmation", message: "Are you sure you want to delete this item record?", preferredStyle: .alert)
+        
+        let yes = UIAlertAction(title: "Yes", style: .default) { action in
+            print("delete")
+            //TODO: update this to database
+            
+            
+        }
+        alert.addAction(yes)
+        
+        let no = UIAlertAction(title: "No", style: .default, handler: nil)
+        
+        alert.addAction(no)
+        
+        self.present(alert, animated: true, completion: nil)
+        
+        
     }
     
 }

@@ -30,6 +30,13 @@ class TableViewVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     @IBAction func addTapped(_ sender: Any) {
         
+        //clear select
+        if selectedIndex != nil {
+                tableView.deselectRow(at: selectedIndex!, animated: true)
+            selectedIndex = nil
+            
+        }
+        
         if let addVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ADD") as? AddViewController{
             
             self.present(addVC, animated: true, completion: nil)

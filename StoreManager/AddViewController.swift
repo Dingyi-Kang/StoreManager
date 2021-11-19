@@ -9,6 +9,7 @@ import UIKit
 
 class AddViewController: UIViewController {
 
+    var item:Item?
     
     @IBOutlet weak var cardView: UIView!
     
@@ -31,6 +32,13 @@ class AddViewController: UIViewController {
         
         cancelButton.layer.cornerRadius = 10
         cancelButton.layer.masksToBounds = true
+        
+        if let item = item{
+            
+            nameTextField.text = item.name
+            quantityTextField.text = String(item.quantity)
+            priceTextField.text = String(item.price)
+        }
         
     
     }
@@ -55,7 +63,7 @@ class AddViewController: UIViewController {
             if let quan = Int(quantity), let pric = Double(price){
                 print("Submit: "+name+" "+String(quan)+" "+String(pric))
                 
-                //submit to database
+                //TODO: update to database
                 
                 //add this as completion closure
                 self.dismiss(animated: true, completion: nil)
