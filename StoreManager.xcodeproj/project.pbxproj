@@ -17,6 +17,7 @@
 		EBA58B1C27474D9400951957 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA58B1B27474D9400951957 /* Item.swift */; };
 		EBA58B1E2747502000951957 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA58B1D2747502000951957 /* Model.swift */; };
 		EBA58B202747794100951957 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA58B1F2747794100951957 /* DetailViewController.swift */; };
+		EBA58B222748219800951957 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA58B212748219800951957 /* AddViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		EBA58B1B27474D9400951957 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		EBA58B1D2747502000951957 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		EBA58B1F2747794100951957 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		EBA58B212748219800951957 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				EBA58B08274749E400951957 /* TableViewVC.swift */,
 				EBA58B0A274749E400951957 /* Main.storyboard */,
 				EBA58B1F2747794100951957 /* DetailViewController.swift */,
+				EBA58B212748219800951957 /* AddViewController.swift */,
 				EBA58B1B27474D9400951957 /* Item.swift */,
 				EBA58B1D2747502000951957 /* Model.swift */,
 				EBA58B10274749E500951957 /* Assets.xcassets */,
@@ -152,6 +155,7 @@
 			files = (
 				EBA58B1C27474D9400951957 /* Item.swift in Sources */,
 				EBA58B09274749E400951957 /* TableViewVC.swift in Sources */,
+				EBA58B222748219800951957 /* AddViewController.swift in Sources */,
 				EBA58B0F274749E400951957 /* StoreManager.xcdatamodeld in Sources */,
 				EBA58B1E2747502000951957 /* Model.swift in Sources */,
 				EBA58B05274749E400951957 /* AppDelegate.swift in Sources */,

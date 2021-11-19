@@ -22,8 +22,10 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        editButton.layer.cornerRadius = 2.0
-        deleteButton.layer.cornerRadius = 2.0
+        editButton.layer.cornerRadius = 12.0
+        editButton.layer.masksToBounds = true
+        deleteButton.layer.cornerRadius = 12.0
+        deleteButton.layer.masksToBounds = true
         
         if let item = item {
             nameLabel.text = item.name

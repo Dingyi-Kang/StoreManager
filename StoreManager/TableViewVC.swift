@@ -30,7 +30,10 @@ class TableViewVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     @IBAction func addTapped(_ sender: Any) {
         
-        print("good")
+        if let addVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ADD") as? AddViewController{
+            
+            self.present(addVC, animated: false, completion: nil)
+        }
     }
     
     
@@ -68,7 +71,8 @@ class TableViewVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         } else {
             cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath)
             if let addButton = cell.viewWithTag(1) as? UIButton{
-                addButton.setTitle("ADD", for: .normal)
+                addButton.layer.cornerRadius = 10
+                addButton.layer.masksToBounds = true//important
             }
         }
         
