@@ -2,7 +2,8 @@
 //  SceneDelegate.swift
 //  StoreManager
 //
-//  Created by DingyiKang on 11/18/21.
+//  Team Project for Software Engineering course -- CS5473
+//  Created by DingyiKang on 11/19/21.
 //
 
 import UIKit

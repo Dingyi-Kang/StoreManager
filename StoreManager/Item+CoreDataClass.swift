@@ -1,8 +1,8 @@
 //
 //  Item+CoreDataClass.swift
 //  StoreManager
-//
-//  Created by OSU App Center on 11/19/21.
+//  Team Project for Software Engineering course -- CS5473
+//  Created by DingyiKang on 11/19/21.
 //
 //
 
