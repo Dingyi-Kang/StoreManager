@@ -16,6 +16,8 @@ class AddViewController: UIViewController {
     
     var delegate:tableViewDelegate?
     
+    var delegate2:detailViewDelegate?
+    
     @IBOutlet weak var cardView: UIView!
     
     @IBOutlet weak var confirmButton: UIButton!
@@ -64,25 +66,30 @@ class AddViewController: UIViewController {
         
         if let name = nameTextField.text, let quantity = quantityTextField.text, let price = priceTextField.text{
             
-            if let quan = Int64(quantity), let pric = Double(price){
-                //TODO: update to database
-                //if there is editing, delete the old one first
-                if item != nil {
-                    self.context.delete(item!)
+            if name != ""{
+                if let quan = Int64(quantity), let pric = Double(price){
+                    //TODO: update to database
+                    //if there is editing, delete the old one first
+                    if item != nil {
+                        self.context.delete(item!)
+                    }
+         
+                    let newItem = Item(context: self.context)
+                    
+                    newItem.name = name
+                    newItem.quantity = quan
+                    newItem.price = pric
+                    
+                    try! self.context.save()
+                    
+                    
+                    //add this as completion closure
+                    self.dismiss(animated: true) {
+                        self.delegate?.refresh()
+                        self.delegate2?.refresh(item: newItem)
+                    }
+                    return
                 }
-     
-                let newItem = Item(context: self.context)
-                
-                newItem.name = name
-                newItem.quantity = quan
-                newItem.price = pric
-                
-                try! self.context.save()
-                
-                delegate?.refresh()
-                //add this as completion closure
-                self.dismiss(animated: true, completion: nil)
-                return
             }
         }
                 
@@ -99,4 +106,10 @@ class AddViewController: UIViewController {
     
     
     
+}
+
+
+protocol detailViewDelegate{
+    
+    func refresh(item: Item)
 }

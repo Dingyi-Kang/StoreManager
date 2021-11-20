@@ -25,19 +25,26 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        editButton.layer.cornerRadius = 12.0
-        editButton.layer.masksToBounds = true
-        deleteButton.layer.cornerRadius = 12.0
-        deleteButton.layer.masksToBounds = true
-        
+
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
         if let item = item {
             nameLabel.text = item.name
             quantityLabel.text = "\(item.quantity)"
             priceLabel.text = "$\(item.price)"
         }
-       
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let item = item {
+            nameLabel.text = item.name
+            quantityLabel.text = "\(item.quantity)"
+            priceLabel.text = "$\(item.price)"
+        }
+    }
+
     
     
     @IBAction func editTapped(_ sender: Any) {
@@ -47,6 +54,7 @@ class DetailViewController: UIViewController {
             addVC.item = self.item
             
             addVC.delegate = self.rootVC
+            addVC.delegate2 = self
             
             self.present(addVC, animated: true, completion: nil)
         }
@@ -79,6 +87,15 @@ class DetailViewController: UIViewController {
         
     }
     
+}
+
+extension DetailViewController: detailViewDelegate{
+    func refresh(item: Item) {
+        self.item = item
+//        self.view.layoutIfNeeded()
+//        self.view.setNeedsLayout()
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
 protocol tableViewDelegate{
