@@ -6,10 +6,15 @@
 //
 
 import UIKit
+import CoreData
 
 class AddViewController: UIViewController {
 
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     var item:Item?
+    
+    var delegate:tableViewDelegate?
     
     @IBOutlet weak var cardView: UIView!
     
@@ -34,7 +39,6 @@ class AddViewController: UIViewController {
         cancelButton.layer.masksToBounds = true
         
         if let item = item{
-            
             nameTextField.text = item.name
             quantityTextField.text = String(item.quantity)
             priceTextField.text = String(item.price)
@@ -60,11 +64,22 @@ class AddViewController: UIViewController {
         
         if let name = nameTextField.text, let quantity = quantityTextField.text, let price = priceTextField.text{
             
-            if let quan = Int(quantity), let pric = Double(price){
-                print("Submit: "+name+" "+String(quan)+" "+String(pric))
-                
+            if let quan = Int64(quantity), let pric = Double(price){
                 //TODO: update to database
+                //if there is editing, delete the old one first
+                if item != nil {
+                    self.context.delete(item!)
+                }
+     
+                let newItem = Item(context: self.context)
                 
+                newItem.name = name
+                newItem.quantity = quan
+                newItem.price = pric
+                
+                try! self.context.save()
+                
+                delegate?.refresh()
                 //add this as completion closure
                 self.dismiss(animated: true, completion: nil)
                 return

@@ -6,11 +6,15 @@
 //
 
 import UIKit
+import CoreData
 
 class DetailViewController: UIViewController {
 
     var item:Item?
     
+    var rootVC:TableViewVC?
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -42,6 +46,8 @@ class DetailViewController: UIViewController {
             
             addVC.item = self.item
             
+            addVC.delegate = self.rootVC
+            
             self.present(addVC, animated: true, completion: nil)
         }
         
@@ -55,9 +61,12 @@ class DetailViewController: UIViewController {
         
         let yes = UIAlertAction(title: "Yes", style: .default) { action in
             print("delete")
-            //TODO: update this to database
+            //TODO: delete this to database
             
-            
+            self.context.delete(self.item!)
+            try! self.context.save()
+            self.rootVC?.refresh()
+            self.dismiss(animated: true, completion: nil)
         }
         alert.addAction(yes)
         
@@ -70,4 +79,9 @@ class DetailViewController: UIViewController {
         
     }
     
+}
+
+protocol tableViewDelegate{
+    
+    func refresh()
 }

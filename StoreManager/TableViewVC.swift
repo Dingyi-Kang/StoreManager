@@ -6,27 +6,45 @@
 //
 
 import UIKit
+import CoreData
 
 class TableViewVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
     
-    let items = Model().items
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var items = [Item]()
     
     var selectedIndex:IndexPath?
     
     @IBOutlet weak var tableView: UITableView!
     
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         tableView.delegate = self;
         tableView.dataSource = self;
-  
+        fectchItems()
     }
 
+    func fectchItems(){
+        do{
+            self.items = try context.fetch(Item.fetchRequest())
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            
+        } catch{
+            
+        }
+        
+    }
+    
+    
     
     @IBAction func addTapped(_ sender: Any) {
         
@@ -38,7 +56,7 @@ class TableViewVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         }
         
         if let addVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ADD") as? AddViewController{
-            
+            addVC.delegate = self
             self.present(addVC, animated: true, completion: nil)
         }
     }
@@ -119,7 +137,7 @@ class TableViewVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         if let detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "detail") as? DetailViewController {
             
             detailVC.item = items[indexPath.row]
-            
+            detailVC.rootVC = self
             self.present(detailVC, animated: true, completion: nil)
         }
         
@@ -127,3 +145,8 @@ class TableViewVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
 
 }
 
+extension TableViewVC: tableViewDelegate{
+    func refresh() {
+        self.fectchItems()
+    }
+}
