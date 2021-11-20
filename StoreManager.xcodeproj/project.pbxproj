@@ -18,6 +18,8 @@
 		EBA58B14274749E500951957 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA58B12274749E500951957 /* LaunchScreen.storyboard */; };
 		EBA58B202747794100951957 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA58B1F2747794100951957 /* DetailViewController.swift */; };
 		EBA58B222748219800951957 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA58B212748219800951957 /* AddViewController.swift */; };
+		EBA58B2527486DEB00951957 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA58B2327486DEB00951957 /* Item+CoreDataClass.swift */; };
+		EBA58B2627486DEB00951957 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA58B2427486DEB00951957 /* Item+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		EBA58B15274749E500951957 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBA58B1F2747794100951957 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EBA58B212748219800951957 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		EBA58B2327486DEB00951957 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EBA58B2427486DEB00951957 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
