@@ -26,7 +26,8 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        editButton.layer.cornerRadius = 10.0
+        deleteButton.layer.cornerRadius = 10.0
     }
     
     
